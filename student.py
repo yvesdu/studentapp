@@ -38,12 +38,41 @@ def get_delay():
             new_vector[index_dict['GradeID_'+str(result['GradeID'])]] = 1
         except:
             pass
+        try:
+            new_vector[index_dict['SectionID_'+str(result['SectionID'])]] = 1
+        except:
+            pass
+        try:
+            new_vector[index_dict['Topic_'+str(result['Topic'])]] = 1
+        except:
+            pass
+        try:
+            new_vector[index_dict['Semester_'+str(result['Semester'])]] = 1
+        except:
+            pass
+        try:
+            new_vector[index_dict['Relation_'+str(result['Relation'])]] = 1
+        except:
+            pass
+        try:
+            new_vector[index_dict['ParentAnsweringSurvey_'+str(result['ParentAnsweringSurvey'])]] = 1
+        except:
+            pass
+        try:
+            new_vector[index_dict['ParentschoolSatisfaction_'+str(result['ParentschoolSatisfaction'])]] = 1
+        except:
+            pass
+        try:
+            new_vector[index_dict['StudentAbsenceDays_'+str(result['StudentAbsenceDays'])]] = 1
+        except:
+            pass
+
 
         pkl_file = open('model5.pkl', 'rb')
         model5 = pickle.load(pkl_file)
-        prediction = model5.predict(new_vector)
+        labels5 = model5.predict(new_vector)
 
-        return render_template('result.html',prediction=prediction)
+        return render_template('result.html',labels5=labels5)
 
 
 if __name__ == '__main__':
